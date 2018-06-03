@@ -1,12 +1,15 @@
-<template>
-  <div class="home">
-    {{ $t('caceresRestaurantsTitle') }}
-  </div>
+<template lang="pug">
+  .content
+    language-switcher
+    .home {{ $t('caceresRestaurantsTitle') }}
 </template>
 
 <script>
+import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 export default {
-  name: 'HelloWorld',
+  name: 'Home',
+  components: { LanguageSwitcher },
+
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
@@ -16,7 +19,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
 h1, h2 {
   font-weight: normal;
 }

@@ -29,6 +29,24 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        include: [
+          path.resolve(__dirname, "not_exist_path")
+        ],
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          },
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-plain-loader'
+      },
+      {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
