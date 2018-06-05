@@ -9,6 +9,7 @@ import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './../node_modules/bootstrap/dist/js/bootstrap.min.js'
 
 import i18n from '@/i18n'
+import CSV from './../csv-parser-library/csv.js'
 
 Vue.config.productionTip = false
 
@@ -18,5 +19,10 @@ new Vue({
   router,
   i18n,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  created () {
+    CSV.fetch({url: './static/csv-files/restaurantes.csv'}).then(data => {
+      console.log(data)
+    })
+  }
 })
