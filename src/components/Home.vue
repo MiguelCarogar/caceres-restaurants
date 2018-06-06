@@ -6,14 +6,24 @@
 
 <script>
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
+import CSV from './../../csv-parser-library/csv.js'
+import store from '@/store/index'
+import inputJsonTransformer from '@/services/input-json-transformer'
 export default {
   name: 'Home',
+
   components: { LanguageSwitcher },
 
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+
+  created () {
+    CSV.fetch({url: './static/csv-files/restaurantes.csv'}).then(data => {
+      store.commit('setRestaurants', inputJsonTransformer.transform(data.records))
+    })
   }
 }
 </script>
