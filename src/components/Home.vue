@@ -37,6 +37,7 @@ import store from '@/store/index'
 import inputJsonTransformer from '@/services/input-json-transformer'
 
 import { mapState } from 'vuex'
+
 export default {
   name: 'Home',
 

@@ -5,11 +5,13 @@ Vue.use(VueI18n)
 
 const messages = {
   en: {
-    caceresRestaurantsTitle: 'Cáceres Restaurants'
+    caceresRestaurantsTitle: 'Cáceres Restaurants',
+    vote: 'Vote'
   },
 
   es: {
-    caceresRestaurantsTitle: 'Restaurantes de Cáceres'
+    caceresRestaurantsTitle: 'Restaurantes de Cáceres',
+    vote: 'Vota'
   }
 }
 
