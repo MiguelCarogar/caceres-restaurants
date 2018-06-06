@@ -9,6 +9,7 @@ import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './../node_modules/bootstrap/dist/js/bootstrap.min.js'
 
 import i18n from '@/i18n'
+import store from '@/store/index'
 
 Vue.config.productionTip = false
 
@@ -18,5 +19,6 @@ new Vue({
   router,
   i18n,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  store
 })
