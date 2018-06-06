@@ -4,25 +4,22 @@
     .home {{ $t('caceresRestaurantsTitle') }}
     .content
       .restaurants(v-for="restaurant in restaurants")
-        .restaurant {{ restaurant.name }}
+        restaurant-component(:restaurant="restaurant")
 </template>
 
 <script>
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
+import RestaurantComponent from '@/components/restaurant.vue'
+
 import CSV from './../../csv-parser-library/csv.js'
 import store from '@/store/index'
 import inputJsonTransformer from '@/services/input-json-transformer'
+
 import { mapState } from 'vuex'
 export default {
   name: 'Home',
 
-  components: { LanguageSwitcher },
-
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
+  components: { LanguageSwitcher, RestaurantComponent },
 
   computed: {
     ...mapState(['restaurants'])
