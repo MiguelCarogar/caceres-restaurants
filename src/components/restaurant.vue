@@ -1,6 +1,8 @@
 <template lang="pug">
-  .content
-    p.restaurant {{ restaurant.name }}
+  .card.mb-4.box-shadow
+    img(src="/static/logo.png").card-img-top
+    .card-body
+      p.card-text {{ restaurant.name }}
 </template>
 
 <script>
