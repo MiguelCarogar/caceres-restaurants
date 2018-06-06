@@ -1,10 +1,14 @@
 <template lang="pug">
-  .content
-    language-switcher
-    .home {{ $t('caceresRestaurantsTitle') }}
-    .content
-      .restaurants(v-for="restaurant in restaurants")
-        restaurant-component(:restaurant="restaurant")
+  main
+    section.jumbotron.text-center
+      .container
+        h1.jumbotron-heading {{ $t('caceresRestaurantsTitle') }}
+        language-switcher
+    .album.py-5.bg-light
+      .container
+        .row
+          .col-md-4(v-for="restaurant in restaurants")
+            restaurant-component(:restaurant="restaurant")
 </template>
 
 <script>
