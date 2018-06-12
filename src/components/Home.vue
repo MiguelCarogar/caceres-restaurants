@@ -24,7 +24,7 @@
       .album.py-5.bg-light
         .container
           .row
-            .col-md-4(v-for="restaurant in restaurants")
+            .col-md-4(v-for="restaurant in restaurantsByPuntuation")
               restaurant-component(:restaurant="restaurant")
 </template>
 
@@ -32,11 +32,11 @@
 import LanguageSwitcher from '@/components/LanguageSwitcher.vue'
 import RestaurantComponent from '@/components/restaurant.vue'
 
-import CSV from './../../csv-parser-library/csv.js'
 import store from '@/store/index'
-import inputJsonTransformer from '@/services/input-json-transformer'
 
 import { mapState } from 'vuex'
+
+import { db } from '@/firebase.js'
 
 export default {
   name: 'Home',
@@ -44,13 +44,19 @@ export default {
   components: { LanguageSwitcher, RestaurantComponent },
 
   computed: {
-    ...mapState(['restaurants'])
+    ...mapState(['restaurants']),
+
+    restaurantsByPuntuation () {
+      return this.restaurants.sort((rest1, rest2) => rest2.puntuation - rest1.puntuation)
+    }
+  },
+
+  firebase: {
+    restaurantsDb: db.ref('restaurants')
   },
 
   created () {
-    CSV.fetch({url: './static/csv-files/restaurantes.csv'}).then(data => {
-      store.commit('setRestaurants', inputJsonTransformer.transform(data.records))
-    })
+    store.commit('setRestaurants', this.restaurantsDb)
   }
 }
 </script>
