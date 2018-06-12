@@ -2,22 +2,22 @@
   .card.mb-4.box-shadow
     img(src="/static/logo.png").card-img-top
     .card-body
-      p.card-text {{ restaurant.name }}
+      p.card-text {{ selectedRestaurant.name }}
       .valorations(v-for="restaurantDb in restaurantsDb")
-        .valoration(v-if="restaurantDb.name === restaurant.name")
+        .valoration(v-if="restaurantDb.name === selectedRestaurant.name")
           p.puntuation {{ restaurantDb.puntuation }}
           button(@click="addPoint(restaurantDb)") {{ $t('vote') }}
-          button(@click="goToDetails(restaurant)") {{$t('details')}}
+          button(@click="goToHome()") {{ $t('home') }}
+
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   import { db } from '@/firebase.js'
   export default {
-    props: {
-      restaurant: { type: Object, required: true }
-    },
-    firebase: {
-      restaurantsDb: db.ref('restaurants')
+    computed: {
+      ...mapState(['selectedRestaurant'])
     },
     methods: {
       addPoint (restaurantDb) {
@@ -26,11 +26,12 @@
           .child('puntuation')
           .set(restaurantDb.puntuation++)
       },
-      goToDetails (restaurant) {
-        const name = restaurant.name
-        this.$store.commit('setSelectedRestaurant', restaurant)
-        this.$router.push({ name: 'restaurantDetails', params: { name } })
+      goToHome () {
+        this.$router.push({ name: 'Home' })
       }
+    },
+    firebase: {
+      restaurantsDb: db.ref('restaurants')
     }
   }
 </script>

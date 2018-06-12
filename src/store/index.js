@@ -5,16 +5,15 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    restaurants: []
+    restaurants: [],
+    selectedRestaurant: {}
   },
   mutations: {
     setRestaurants (state, restaurants) {
       state.restaurants = restaurants
-    }
-  },
-  actions: {
-    fetchResturants () {
-
+    },
+    setSelectedRestaurant (state, restaurant) {
+      state.selectedRestaurant = restaurant
     }
   }
 })

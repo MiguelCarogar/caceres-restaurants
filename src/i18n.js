@@ -6,12 +6,16 @@ Vue.use(VueI18n)
 const messages = {
   en: {
     caceresRestaurantsTitle: 'Cáceres Restaurants',
-    vote: 'Vote'
+    vote: 'Vote',
+    details: 'Details',
+    home: 'Home'
   },
 
   es: {
     caceresRestaurantsTitle: 'Restaurantes de Cáceres',
-    vote: 'Vota'
+    vote: 'Vota',
+    details: 'Detalles',
+    home: 'Home'
   }
 }
 
